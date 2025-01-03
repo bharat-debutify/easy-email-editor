@@ -55,10 +55,7 @@ module.exports = {
 
     'react/jsx-curly-spacing': ['error', 'never', { allowMultiline: true }],
     'react/jsx-key': 'warn',
-    'react/jsx-max-props-per-line': [
-      'error',
-      { maximum: 2, when: 'multiline' },
-    ],
+    'react/jsx-max-props-per-line': ['error', { maximum: 2, when: 'multiline' }],
     'react/jsx-wrap-multilines': [
       'error',
       {

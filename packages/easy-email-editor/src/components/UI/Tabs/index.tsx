@@ -13,6 +13,7 @@ export interface TabsProps {
   onBeforeChange?: (current: string, next: string) => boolean;
   defaultActiveTab?: string;
   activeTab?: string;
+  tabBarExtraContentRight?: React.ReactNode;
 }
 export interface TabPaneProps {
   children?: React.ReactNode;
@@ -58,29 +59,23 @@ const Tabs: React.FC<TabsProps> = props => {
           distribution='equalSpacing'
           alignment='center'
         >
+          {props.tabBarExtraContent}
           <Stack alignment='center'>
             {React.Children.map(
               props.children as any,
               (item: { props: { tab: TabPaneProps }; key: string }, index) => {
                 return (
-                  <div
-                    key={item.key}
+                  <Button
+                    noBorder
                     onClick={() => onClick(item.key)}
-                    className={classnames(
-                      'easy-email-editor-tabItem',
-                      !activeTab && index === 0 && 'easy-email-editor-tabActiveItem',
-                      activeTab === item.key && 'easy-email-editor-tabActiveItem',
-                    )}
                   >
-                    <Button noBorder>
-                      <>{item.props.tab}</>
-                    </Button>
-                  </div>
+                    <>{item.props.tab}</>
+                  </Button>
                 );
               },
             )}
           </Stack>
-          {props.tabBarExtraContent}
+          {props.tabBarExtraContentRight}
         </Stack>
       </div>
       {React.Children.map(

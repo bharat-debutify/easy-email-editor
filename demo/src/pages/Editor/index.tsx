@@ -59,6 +59,39 @@ import { useShowCommercialEditor } from '@demo/hooks/useShowCommercialEditor';
 
 const defaultCategories: ExtensionProps['categories'] = [
   {
+    label: 'Layout',
+    active: true,
+    displayType: 'column',
+    blocks: [
+      {
+        title: '1 columns',
+        payload: [['100%']],
+      },
+      {
+        title: '2 columns',
+        payload: [
+          ['50%', '50%'],
+          // ['33%', '67%'],
+          // ['67%', '33%'],
+          // ['25%', '75%'],
+          // ['75%', '25%'],
+        ],
+      },
+      {
+        title: '3 columns',
+        payload: [
+          ['33.33%', '33.33%', '33.33%'],
+          // ['25%', '25%', '50%'],
+          // ['50%', '25%', '25%'],
+        ],
+      },
+      {
+        title: '4 columns',
+        payload: [['25%', '25%', '25%', '25%']],
+      },
+    ],
+  },
+  {
     label: 'Content',
     active: true,
     blocks: [
@@ -92,35 +125,7 @@ const defaultCategories: ExtensionProps['categories'] = [
       },
     ],
   },
-  {
-    label: 'Layout',
-    active: true,
-    displayType: 'column',
-    blocks: [
-      {
-        title: '2 columns',
-        payload: [
-          ['50%', '50%'],
-          ['33%', '67%'],
-          ['67%', '33%'],
-          ['25%', '75%'],
-          ['75%', '25%'],
-        ],
-      },
-      {
-        title: '3 columns',
-        payload: [
-          ['33.33%', '33.33%', '33.33%'],
-          ['25%', '25%', '50%'],
-          ['50%', '25%', '25%'],
-        ],
-      },
-      {
-        title: '4 columns',
-        payload: [['25%', '25%', '25%', '25%']],
-      },
-    ],
-  },
+
   {
     label: 'Custom',
     active: true,
@@ -454,7 +459,10 @@ export default function Editor() {
                   }
                 />
 
-                <StandardLayout categories={defaultCategories}>
+                <StandardLayout
+                  categories={defaultCategories}
+                  compact={false}
+                >
                   <EmailEditor />
                 </StandardLayout>
                 <AutoSaveAndRestoreEmail />

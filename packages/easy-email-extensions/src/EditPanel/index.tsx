@@ -25,7 +25,7 @@ export function EditPanel({
   return (
     <Layout.Sider
       className={styles.blocksPanel}
-      style={{ paddingRight: 0, minWidth: 360 }}
+      style={{ padding: '10px 20px', minWidth: 360 }}
       // collapsed={collapsed}
       collapsible
       trigger={null}
@@ -34,6 +34,7 @@ export function EditPanel({
       width={360}
     >
       <Tabs
+        type='text'
         defaultActiveTab='2'
         style={{ width: '100%', padding: 0 }}
         renderTabHeader={(_, DefaultHeader) => (
@@ -46,9 +47,11 @@ export function EditPanel({
           key='2'
           title={t('Block')}
         >
-          <FullHeightOverlayScrollbars height={`calc(${height} - 60px)`}>
-            <Blocks />
-          </FullHeightOverlayScrollbars>
+          <div style={{ paddingTop: '20px' }}>
+            <FullHeightOverlayScrollbars height={`calc(${height} - 60px)`}>
+              <Blocks />
+            </FullHeightOverlayScrollbars>
+          </div>
         </TabPane>
 
         <TabPane
